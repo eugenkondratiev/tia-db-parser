@@ -1,0 +1,36 @@
+﻿TYPE "User_data_type_1"
+VERSION : 0.1
+   STRUCT
+      st : Struct
+         stRe : Real; // aafadfafaf
+         str1 : Struct  //QE100  foadhi ahlf
+            x : Real;
+            y : Real;
+         END_STRUCT;
+         str2 : Struct
+            a : Bool;
+            b : Bool;  //af ggg 202000 dgqf
+            c : Bool;
+         END_STRUCT;
+      END_STRUCT;
+         ololo1Re : Real;
+         ololo2Re : Real;
+         ololo2In : Int;
+     to : Struct
+         toRe : Real;
+         tostr1 : Struct
+            tox : Real;
+            toy : Real;
+         END_STRUCT;
+         tostr2 : Struct
+            toa : Bool;
+            tob : Bool;
+            toc : Bool;
+         END_STRUCT;
+      END_STRUCT;
+         ololo5Bo : Bool;
+         ololo6Bo : Bool;
+   END_STRUCT;
+
+END_TYPE
+

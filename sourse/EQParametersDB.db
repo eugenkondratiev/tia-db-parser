@@ -1,0 +1,279 @@
+﻿DATA_BLOCK "EQParametersDB"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+   STRUCT 
+      TIU20005 : Struct   // TIU20005: Tipper
+         cartonEmptySysBypssBo : Bool;
+         caseEmptyTimeRe : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      FED20010 : Struct
+         beltSpeedSPRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      MET20030 : Struct
+         MTfillingSPRe : Real;
+         endMTTrackLevRe : Real;
+         endMTChargLevRe : Real;
+         trackSpeedSPRe : Real;
+         stopSteamRe : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      SEP20040 : Struct
+         stopSteamDelRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVB20050 : Struct
+         machineEmptyRe : Real;
+         beltSpeedSPRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      DSCL20055 : Struct
+         fan1SpeedRe : Real;
+         fan2SpeedRe : Real;
+         filt1CleanTimeRe : Real;
+         filt1FanStopDelRe : Real;
+         filt2CleanTimeRe : Real;
+         filt2FanStopDelRe : Real;
+         spare24Re : Real;
+         spare28Re : Real;
+         spare32Re : Real;
+         spare36Re : Real;
+         spare40Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      AIS20061 : Struct
+         disch3StopDelRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20070 : Struct
+         VIBbwCmDelayRe : Real;
+         VIBbwCmDurationRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20071 : Struct
+         VIBbwCmDelayRe : Real;
+         VIBbwCmDurationRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20075 : Struct
+         VIBbwCmDelayRe : Real;
+         VIBbwCmDurationRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20076 : Struct
+         VIBbwCmDelayRe : Real;
+         VIBbwCmDurationRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20080 : Struct
+         VIBbwCmDelayRe : Real;
+         VIBbwCmDurationRe : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVB20085 : Struct
+         spare00Re : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVB20086 : Struct
+         spare00Re : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVB20087 : Struct
+         spare00Re : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVV20090 : Struct
+         spare00Re : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      CVB20100 : Struct
+         beltSpeedSPRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..10] of Real;
+      END_STRUCT;
+      DLF20120LP1 : Struct
+         filtCleanTimeRe : Real;
+         spare04Re : Real;
+         delBetweenValvesRe : Real;
+         runCycleDelRe : Real;
+         finalCycleDelRe : Real;
+         pulsesDurationRe : Real;
+         spare24Re : Real;
+         maxFilterStopTimeRe : Real;
+         spare32Re : Real;
+         finalCyclesNumIt : Int;
+         spareRe : Array[0..10] of Real;
+      END_STRUCT;
+      DLF20120LP2 : Struct
+         filtCleanTimeRe : Real;
+         spare04Re : Real;
+         delBetweenValvesRe : Real;
+         runCycleDelRe : Real;
+         finalCycleDelRe : Real;
+         pulsesDurationRe : Real;
+         spare24Re : Real;
+         maxFilterStopTimeRe : Real;
+         spare32Re : Real;
+         finalCyclesNumIt : Int;
+         spareRe : Array[0..10] of Real;
+      END_STRUCT;
+      DLF20120LP3 : Struct
+         filtCleanTimeRe : Real;
+         spare04Re : Real;
+         delBetweenValvesRe : Real;
+         runCycleDelRe : Real;
+         finalCycleDelRe : Real;
+         pulsesDurationRe : Real;
+         spare24Re : Real;
+         maxFilterStopTimeRe : Real;
+         spare32Re : Real;
+         finalCyclesNumIt : Int;
+         spareRe : Array[0..10] of Real;
+      END_STRUCT;
+      DLF20140 : Struct
+         fanSpeedSPRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+      END_STRUCT;
+      CVS20150 : Struct
+         screwStopDelRe : Real;
+         spare04Re : Real;
+         spare08Re : Real;
+         spare12Re : Real;
+         spare16Re : Real;
+         spareAr : Array[1..30] of Real;
+      END_STRUCT;
+      Common : Struct
+         I1XX_filtersAirClnCycWorkSeparBo : Bool;
+         spare02Re : Real;
+         spare06Re : Real;
+         DSCL20055fansSpeedDs : Array[0..10] of Struct
+            fan1SpeedRe : Real;   // King size
+            fan2SpeedRe : Real;   // King size
+            spare08Re : Real;
+            spare12Re : Real;
+            spare16Re : Real;
+         END_STRUCT;
+         spareRe : Array[0..10] of Real;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+   TIU20005.cartonEmptySysBypssBo := FALSE;
+   TIU20005.caseEmptyTimeRe := 5.0;
+   TIU20005.spareAr[1] := 0.0;
+   TIU20005.spareAr[2] := 0.0;
+   TIU20005.spareAr[3] := 0.0;
+   TIU20005.spareAr[4] := 0.0;
+   TIU20005.spareAr[5] := 0.0;
+   TIU20005.spareAr[6] := 0.0;
+   TIU20005.spareAr[7] := 0.0;
+   TIU20005.spareAr[8] := 0.0;
+   TIU20005.spareAr[9] := 0.0;
+   TIU20005.spareAr[10] := 0.0;
+   FED20010.beltSpeedSPRe := 35.0;
+   MET20030.MTfillingSPRe := 66.0;
+   MET20030.endMTTrackLevRe := 66.0;
+   MET20030.endMTChargLevRe := 100.0;
+   MET20030.trackSpeedSPRe := 25.0;
+   MET20030.stopSteamRe := 15.0;
+   SEP20040.stopSteamDelRe := 300.0;
+   CVB20050.machineEmptyRe := 15.0;
+   CVB20050.beltSpeedSPRe := 35.0;
+   DSCL20055.fan1SpeedRe := 56.0;
+   DSCL20055.fan2SpeedRe := 54.0;
+   CVV20070.VIBbwCmDelayRe := 5.0;
+   CVV20070.VIBbwCmDurationRe := 1.0;
+   CVV20071.VIBbwCmDelayRe := 5.0;
+   CVV20071.VIBbwCmDurationRe := 1.0;
+   CVV20075.VIBbwCmDelayRe := 5.0;
+   CVV20075.VIBbwCmDurationRe := 1.0;
+   CVV20076.VIBbwCmDelayRe := 5.0;
+   CVV20076.VIBbwCmDurationRe := 1.0;
+   CVV20080.VIBbwCmDelayRe := 5.0;
+   CVV20080.VIBbwCmDurationRe := 0.8;
+   CVB20085.spare00Re := 0.0;
+   CVB20086.spare00Re := 0.0;
+   CVB20087.spare00Re := 0.0;
+   CVB20100.beltSpeedSPRe := 40.0;
+   DLF20120LP1.filtCleanTimeRe := 380.5;
+   DLF20120LP1.delBetweenValvesRe := 5.0;
+   DLF20120LP1.runCycleDelRe := 40.0;
+   DLF20120LP1.finalCycleDelRe := 10.0;
+   DLF20120LP1.pulsesDurationRe := 0.3;
+   DLF20120LP1.maxFilterStopTimeRe := 240.0;
+   DLF20120LP1.finalCyclesNumIt := 5;
+   DLF20120LP2.filtCleanTimeRe := 380.5;
+   DLF20120LP2.delBetweenValvesRe := 5.0;
+   DLF20120LP2.runCycleDelRe := 40.0;
+   DLF20120LP2.finalCycleDelRe := 10.0;
+   DLF20120LP2.pulsesDurationRe := 0.3;
+   DLF20120LP2.maxFilterStopTimeRe := 120.0;
+   DLF20120LP2.finalCyclesNumIt := 5;
+   DLF20120LP3.filtCleanTimeRe := 380.5;
+   DLF20120LP3.delBetweenValvesRe := 5.0;
+   DLF20120LP3.runCycleDelRe := 40.0;
+   DLF20120LP3.finalCycleDelRe := 10.0;
+   DLF20120LP3.pulsesDurationRe := 0.3;
+   DLF20120LP3.maxFilterStopTimeRe := 120.0;
+   DLF20120LP3.finalCyclesNumIt := 5;
+   DLF20140.fanSpeedSPRe := 50.0;
+   CVS20150.screwStopDelRe := 120.0;
+   Common.DSCL20055fansSpeedDs[0].fan1SpeedRe := 56.0;
+   Common.DSCL20055fansSpeedDs[0].fan2SpeedRe := 54.0;
+
+END_DATA_BLOCK
+

@@ -1,0 +1,848 @@
+{
+ "types": {},
+ "db": {
+  "TIU20005": {
+   "cartonEmptySysBypssBo": {
+    "type": "Bool",
+    "defaultValue": null,
+    "comment": null
+   },
+   "caseEmptyTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "FED20010": {
+   "beltSpeedSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "MET20030": {
+   "MTfillingSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "endMTTrackLevRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "endMTChargLevRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "trackSpeedSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "stopSteamRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "SEP20040": {
+   "stopSteamDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVB20050": {
+   "machineEmptyRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "beltSpeedSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "DSCL20055": {
+   "fan1SpeedRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "fan2SpeedRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "filt1CleanTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "filt1FanStopDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "filt2CleanTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "filt2FanStopDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare24Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare28Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare32Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare36Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare40Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "AIS20061": {
+   "disch3StopDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20070": {
+   "VIBbwCmDelayRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "VIBbwCmDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20071": {
+   "VIBbwCmDelayRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "VIBbwCmDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20075": {
+   "VIBbwCmDelayRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "VIBbwCmDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20076": {
+   "VIBbwCmDelayRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "VIBbwCmDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20080": {
+   "VIBbwCmDelayRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "VIBbwCmDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVB20085": {
+   "spare00Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVB20086": {
+   "spare00Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVB20087": {
+   "spare00Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVV20090": {
+   "spare00Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVB20100": {
+   "beltSpeedSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "DLF20120LP1": {
+   "filtCleanTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "delBetweenValvesRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "runCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "pulsesDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare24Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "maxFilterStopTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare32Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCyclesNumIt": {
+    "type": "Int",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareRe": {
+    "type": "Array[0..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "DLF20120LP2": {
+   "filtCleanTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "delBetweenValvesRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "runCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "pulsesDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare24Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "maxFilterStopTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare32Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCyclesNumIt": {
+    "type": "Int",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareRe": {
+    "type": "Array[0..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "DLF20120LP3": {
+   "filtCleanTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "delBetweenValvesRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "runCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCycleDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "pulsesDurationRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare24Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "maxFilterStopTimeRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare32Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "finalCyclesNumIt": {
+    "type": "Int",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareRe": {
+    "type": "Array[0..10] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "DLF20140": {
+   "fanSpeedSPRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "CVS20150": {
+   "screwStopDelRe": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare04Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare08Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare12Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare16Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spareAr": {
+    "type": "Array[1..30] of Real",
+    "defaultValue": null,
+    "comment": null
+   }
+  },
+  "spareRe": {
+   "type": "Array[0..10] of Real",
+   "defaultValue": null,
+   "comment": null
+  },
+  "Common": {
+   "I1XX_filtersAirClnCycWorkSeparBo": {
+    "type": "Bool",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare02Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "spare06Re": {
+    "type": "Real",
+    "defaultValue": null,
+    "comment": null
+   },
+   "DSCL20055fansSpeedDs": {
+    "fan1SpeedRe": {
+     "type": "Real",
+     "defaultValue": null,
+     "comment": " King size"
+    },
+    "fan2SpeedRe": {
+     "type": "Real",
+     "defaultValue": null,
+     "comment": " King size"
+    },
+    "spare08Re": {
+     "type": "Real",
+     "defaultValue": null,
+     "comment": null
+    },
+    "spare12Re": {
+     "type": "Real",
+     "defaultValue": null,
+     "comment": null
+    },
+    "spare16Re": {
+     "type": "Real",
+     "defaultValue": null,
+     "comment": null
+    },
+    "isArray": true,
+    "comment": null,
+    "arrayStart": 0,
+    "arrayEnd": 10
+   }
+  }
+ },
+ "dbName": "EQParametersDB"
+}

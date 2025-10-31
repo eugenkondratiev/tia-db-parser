@@ -1,0 +1,416 @@
+﻿TYPE "IPIDistrCommandsUDT"
+VERSION : 0.1
+   STRUCT
+      bit8_available : Bool;   // bit 8: available
+      checkAlarmReqBo : Bool;   // bit 9: show alarms with no request to start
+      resetExtCmdsBo : Bool;   // bit A: reset external commands
+      manStartOpenCmdBo : Bool;   // bit B: manual start/open command
+      manStartBwCmdBo : Bool;   // bit C: manual start backward command
+      manStopCmdBo : Bool;   // bit D: manual stop/denergize command
+      manCloseCmdBo : Bool;   // bit E: manual close command
+      bitF_available : Bool;   // bit F: available
+      switchToManCmdBo : Bool;   // bit 0: manual mode command
+      switchToAutCmdBo : Bool;   // bit 1: automatic mode command
+      switchToOffCmdBo : Bool;   // bit 2: off mode command
+      rstAlmCmdBo : Bool;   // bit 3: reset alarm command
+      ackAlmCmdBo : Bool;   // bit 4: acknolwedge alarm command
+      standbyReqBo : Bool;   // bit 5: standby request command
+      stopReqBo : Bool;   // bit 6: stop request command
+      bit7_available : Bool;   // bit 7: available
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "IPICombinedStatesUDT"
+VERSION : 0.1
+   STRUCT
+      anyAlarmActiveBo : Bool;   // bit 8: any alarm active
+      anyNewAlarmAlertBo : Bool;   // bit 9: any new alarm alert
+      anyStartAlertBo : Bool;   // bit A: any start alert
+      anyWarningActiveBo : Bool;   // bit B: any warning active
+      anyNewWarningAlertBo : Bool;   // bit C: any new warning alert
+      anyCMMInsulatedBo : Bool;   // bit D: any CM insulated
+      anyCMOffBo : Bool;   // bit E: any CM off
+      anyHornOffCmdBo : Bool;   // bit F: any horn off command
+      anyCMDisabledBo : Bool;   // bit 0: any CM disabled
+      anyCMManualBo : Bool;   // bit 1: any CM in manual mode
+      anyCMAutomaticBo : Bool;   // bit 2: any CM in automatic mode
+      anyCMAutWoStandbyBo : Bool;   // bit 3: any CM in automatic without standby
+      anyCMAutWStandbyBo : Bool;   // bit 4: any CM in automatic with standby
+      anyCMOperatingBo : Bool;   // bit 5: any CM operating
+      anyCMForcedBo : Bool;   // bit 6: any CM forced
+      anyCMNotReadyBo : Bool;   // bit 7: any CM not ready for batch
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "U0101HMIUDT"
+VERSION : 0.1
+   STRUCT
+      EQ055fansSpeedSelIt : Int;
+      spareAr : Array[1..10] of Word;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_RippingSeparators000HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_MeteringTube000HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_Tipper001HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int := 0;   // EQ status (status HMI visualization)
+      phaseIt : Int := 0;   // EQ actual phase to show on HMI
+      stepIt : Int := 0;   // EQ actual phase with sub-phase that is in execution
+      executionPercIt : Int := 0;   // EQ actual phase execution percentage bar
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_DoubleMotor000HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_RippingDustFilter000HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "CGHMIUDT"
+VERSION : 0.1
+   STRUCT
+      controlModeSr : String[50];   // control mode of HMI
+      HMItoPLChandshakeIt : Int;   // handshake HMI to PLC
+      distrCmdsDs : "IPIDistrCommandsUDT";   // CG commands codification:
+      syncPLCReqBo : Bool;   // HMI panel request to syncronize date & time wtih PLC
+      dateTimeDt : Date_And_Time;   // HMI panel date & time
+      reservedForDtAr : Array[1..2] of Word;   // HMI panel reserved area for date & time
+      jobNumWo : Word;   // HMI panel job number
+      reservedForJobAr : Array[1..2] of Word;   // HMI panel reserved area for job number
+      PLCtoHMIhandshakeIt : Int;   // handshake PLC to HMI
+      combStatesDs : "IPICombinedStatesUDT";   // CG combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "CM_MotorHMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // HMI->PLC - HMI commands codification
+      motorCfgDataWo : Word;   // PLC->HMI - motor configuration data
+      motorStatusIt : Int;   // PLC->HMI - motor status
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "CM_InverterHMIUDT"
+VERSION : 0.1
+   STRUCT
+      extSPCmdBo : Bool := FALSE;   // HMI->PLC - External speed setpoint command
+      extSPRe : Real;   // HMI->PLC - External speed setpoint value
+      actualSpeedRe : Real;   // PLC->HMI - actual speed
+      speedUoMIt : Int;   // PLC->HMI - actual speed unit of measurements
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "CM_SingleSolHMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // HMI->PLC - HMI commands codification
+      valveCfgDataWo : Word;   // PLC->HMI - valve configuration data
+      valveStatusIt : Int;   // PLC->HMI - valve status
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_SinMot000HMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "EQ_SinMot3SolHMIUDT"
+VERSION : 0.1
+   STRUCT
+      distrCmdsDs : "IPIDistrCommandsUDT";   // upper level HMI commands codification:
+      statusIt : Int;   // EQ status (status HMI visualization)
+      combStatesDs : "IPICombinedStatesUDT";   // EQ combined states
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "ServicesDiagHMIUDT"
+VERSION : 0.1
+   STRUCT
+      testLampReqBo : Bool;   // HMI test lamp command
+      testLampPercIt : Int;   // test lamp percentage execution
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "HMIDB"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 0.1
+NON_RETAIN
+   STRUCT 
+      ctrlMode : Struct
+         CG01 : "CGHMIUDT";
+         spareCGsAr : Array[1..5] of "CGHMIUDT";
+      END_STRUCT;
+      EQ005 : Struct   // EQ005: Tipper
+         EQ { S7_SetPoint := 'False'} : "EQ_Tipper001HMIUDT";
+         M1 { S7_SetPoint := 'False'} : "CM_MotorHMIUDT";
+         SparesAr : Array[1..30] of Word;
+      END_STRUCT;
+      EQ010 : Struct   // EQ010: Inclined bend feeder
+         EQ : "EQ_DoubleMotor000HMIUDT";
+         M2 : "CM_MotorHMIUDT";   // EQ010-M2: CM Motor Belt
+         M2U : "CM_InverterHMIUDT";   // EQ010-U2: CM Inverter Belt
+         M1 : "CM_MotorHMIUDT";   // EQ010-M1: CM Motor Hor.belt
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ030 : Struct   // EQ030: Metering tube
+         EQ : "EQ_MeteringTube000HMIUDT";
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ040 : Struct   // EQ040: Steam Panel
+         EQ : "EQ_SinMot3SolHMIUDT";
+         Y1 : "CM_SingleSolHMIUDT";   // EQ040: CM Single Solenoid  Steam
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ050 : Struct   // EQ050: Belt conveyor w Doffer
+         EQ : "EQ_DoubleMotor000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ050-M1: CM Motor Belt
+         M1U : "CM_InverterHMIUDT";   // EQ050-U1: CM Inverter Belt
+         M2 : "CM_MotorHMIUDT";   // EQ050-M2: CM Motor Doffer
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ055 : Struct   // EQ055: Separator
+         EQ : "EQ_RippingSeparators000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ055-M1: CM Motor Fan 1
+         M1U : "CM_InverterHMIUDT";   // EQ055-U1: CM Inverter Fan 1
+         M2 : "CM_MotorHMIUDT";   // EQ055-M2: CM Motor Air Lock 1
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ056 : Struct   // EQ056: Separator
+         EQ : "EQ_RippingSeparators000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ056-M1: CM Motor Fan 1
+         M1U : "CM_InverterHMIUDT";   // EQ056-U1: CM Inverter Fan 1
+         M2 : "CM_MotorHMIUDT";   // EQ056-M2: CM Motor Air Lock 1
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ061 : Struct   // EQ061: Classifier Air Lock
+         M1 : "CM_MotorHMIUDT";   // EQ061-M1: CM Motor Air Lock
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ070 : Struct   // EQ070A/B/C/D: First Sieving Conveyors
+         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         M2 : "CM_MotorHMIUDT";   // EQ071-M1: CM Motor Vibro Conveyor
+         M3 : "CM_MotorHMIUDT";   // EQ075-M1: CM Motor Vibro Conveyor
+         M4 : "CM_MotorHMIUDT";   // EQ076M1: CM Motor Vibro Conveyor
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ080 : Struct   // EQ080: Second Vibro Conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ080-M1: CM Motor Vibro Conveyor
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ085 : Struct   // EQ085: Belt conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ086 : Struct   // EQ086: Belt conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ087 : Struct   // EQ087:  Belt conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ090 : Struct   // EQ090: Vibro Conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ090-M1: CM Motor Belt
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ100 : Struct   // EQ100: Belt conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ100-M1: CM Motor Belt
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ120LP1 : Struct   // EQ120: Filter 1
+         EQ : "EQ_RippingDustFilter000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ120-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // EQ120-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // EQ120-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // EQ120-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // EQ120-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // EQ120-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // EQ120-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // EQ120-YV7: CM Single Solenoid Filter Clean 7
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ120LP2 : Struct   // EQ120LP2: Filter 2
+         EQ : "EQ_RippingDustFilter000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ120LP2-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV7: CM Single Solenoid Filter Clean 7
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ120LP3 : Struct   // EQ120LP3: Filter 3 with fan
+         EQ : "EQ_RippingDustFilter000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ120LP3-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV7: CM Single Solenoid Filter Clean 7
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ140 : Struct   // EQ140: Filter fan
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ140-M1: CM Motor Fan
+         M1U : "CM_InverterHMIUDT";
+         SparesAr : Array[1..20] of Word;
+      END_STRUCT;
+      EQ150 : Struct   // EQ150: Screw conveyor
+         EQ : "EQ_SinMot000HMIUDT";
+         M1 : "CM_MotorHMIUDT";   // EQ150-M1: CM Motor Screw
+         SparesAr : Array[1..72] of Word;
+      END_STRUCT;
+      serviceDiagDs : "ServicesDiagHMIUDT";
+      U0101 : "U0101HMIUDT";
+      Cabinets : Struct
+         statusIt : Int;   // =CP10.00: Cabinet status
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+   EQ090.SparesAr[1] := 16#0000;
+   EQ090.SparesAr[2] := 16#0000;
+   EQ090.SparesAr[3] := 16#0000;
+   EQ090.SparesAr[4] := 16#0000;
+   EQ090.SparesAr[5] := 16#0000;
+   EQ090.SparesAr[6] := 16#0000;
+   EQ090.SparesAr[7] := 16#0000;
+   EQ090.SparesAr[8] := 16#0000;
+   EQ090.SparesAr[9] := 16#0000;
+   EQ090.SparesAr[10] := 16#0000;
+   EQ090.SparesAr[11] := 16#0000;
+   EQ090.SparesAr[12] := 16#0000;
+   EQ090.SparesAr[13] := 16#0000;
+   EQ090.SparesAr[14] := 16#0000;
+   EQ090.SparesAr[15] := 16#0000;
+   EQ090.SparesAr[16] := 16#0000;
+   EQ090.SparesAr[17] := 16#0000;
+   EQ090.SparesAr[18] := 16#0000;
+   EQ090.SparesAr[19] := 16#0000;
+   EQ090.SparesAr[20] := 16#0000;
+   EQ120LP1.SparesAr[1] := 16#0000;
+   EQ120LP1.SparesAr[2] := 16#0000;
+   EQ120LP1.SparesAr[3] := 16#0000;
+   EQ120LP1.SparesAr[4] := 16#0000;
+   EQ120LP1.SparesAr[5] := 16#0000;
+   EQ120LP1.SparesAr[6] := 16#0000;
+   EQ120LP1.SparesAr[7] := 16#0000;
+   EQ120LP1.SparesAr[8] := 16#0000;
+   EQ120LP1.SparesAr[9] := 16#0000;
+   EQ120LP1.SparesAr[10] := 16#0000;
+   EQ120LP1.SparesAr[11] := 16#0000;
+   EQ120LP1.SparesAr[12] := 16#0000;
+   EQ120LP1.SparesAr[13] := 16#0000;
+   EQ120LP1.SparesAr[14] := 16#0000;
+   EQ120LP1.SparesAr[15] := 16#0000;
+   EQ120LP1.SparesAr[16] := 16#0000;
+   EQ120LP1.SparesAr[17] := 16#0000;
+   EQ120LP1.SparesAr[18] := 16#0000;
+   EQ120LP1.SparesAr[19] := 16#0000;
+   EQ120LP1.SparesAr[20] := 16#0000;
+   EQ120LP2.SparesAr[1] := 16#0000;
+   EQ120LP2.SparesAr[2] := 16#0000;
+   EQ120LP2.SparesAr[3] := 16#0000;
+   EQ120LP2.SparesAr[4] := 16#0000;
+   EQ120LP2.SparesAr[5] := 16#0000;
+   EQ120LP2.SparesAr[6] := 16#0000;
+   EQ120LP2.SparesAr[7] := 16#0000;
+   EQ120LP2.SparesAr[8] := 16#0000;
+   EQ120LP2.SparesAr[9] := 16#0000;
+   EQ120LP2.SparesAr[10] := 16#0000;
+   EQ120LP2.SparesAr[11] := 16#0000;
+   EQ120LP2.SparesAr[12] := 16#0000;
+   EQ120LP2.SparesAr[13] := 16#0000;
+   EQ120LP2.SparesAr[14] := 16#0000;
+   EQ120LP2.SparesAr[15] := 16#0000;
+   EQ120LP2.SparesAr[16] := 16#0000;
+   EQ120LP2.SparesAr[17] := 16#0000;
+   EQ120LP2.SparesAr[18] := 16#0000;
+   EQ120LP2.SparesAr[19] := 16#0000;
+   EQ120LP2.SparesAr[20] := 16#0000;
+   EQ120LP3.SparesAr[1] := 16#0000;
+   EQ120LP3.SparesAr[2] := 16#0000;
+   EQ120LP3.SparesAr[3] := 16#0000;
+   EQ120LP3.SparesAr[4] := 16#0000;
+   EQ120LP3.SparesAr[5] := 16#0000;
+   EQ120LP3.SparesAr[6] := 16#0000;
+   EQ120LP3.SparesAr[7] := 16#0000;
+   EQ120LP3.SparesAr[8] := 16#0000;
+   EQ120LP3.SparesAr[9] := 16#0000;
+   EQ120LP3.SparesAr[10] := 16#0000;
+   EQ120LP3.SparesAr[11] := 16#0000;
+   EQ120LP3.SparesAr[12] := 16#0000;
+   EQ120LP3.SparesAr[13] := 16#0000;
+   EQ120LP3.SparesAr[14] := 16#0000;
+   EQ120LP3.SparesAr[15] := 16#0000;
+   EQ120LP3.SparesAr[16] := 16#0000;
+   EQ120LP3.SparesAr[17] := 16#0000;
+   EQ120LP3.SparesAr[18] := 16#0000;
+   EQ120LP3.SparesAr[19] := 16#0000;
+   EQ120LP3.SparesAr[20] := 16#0000;
+
+END_DATA_BLOCK
+
