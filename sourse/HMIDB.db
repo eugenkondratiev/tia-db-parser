@@ -47,7 +47,8 @@ END_TYPE
 TYPE "U0101HMIUDT"
 VERSION : 0.1
    STRUCT
-      EQ055fansSpeedSelIt : Int;
+      DSCL20055fansSpeedSelIt : Int;
+      DSCL20056fansSpeedSelIt : Int;
       spareAr : Array[1..10] of Word;
    END_STRUCT;
 
@@ -192,134 +193,134 @@ NON_RETAIN
          CG01 : "CGHMIUDT";
          spareCGsAr : Array[1..5] of "CGHMIUDT";
       END_STRUCT;
-      EQ005 : Struct   // EQ005: Tipper
+      TIU20005 : Struct   // TIU20005: Tipper
          EQ { S7_SetPoint := 'False'} : "EQ_Tipper001HMIUDT";
          M1 { S7_SetPoint := 'False'} : "CM_MotorHMIUDT";
          SparesAr : Array[1..30] of Word;
       END_STRUCT;
-      EQ010 : Struct   // EQ010: Inclined bend feeder
+      FED20010 : Struct   // FED20010: Inclined bend feeder
          EQ : "EQ_DoubleMotor000HMIUDT";
-         M2 : "CM_MotorHMIUDT";   // EQ010-M2: CM Motor Belt
-         M2U : "CM_InverterHMIUDT";   // EQ010-U2: CM Inverter Belt
-         M1 : "CM_MotorHMIUDT";   // EQ010-M1: CM Motor Hor.belt
+         M2 : "CM_MotorHMIUDT";   // FED20010-M2: CM Motor Belt
+         M2U : "CM_InverterHMIUDT";   // FED20010-U2: CM Inverter Belt
+         M1 : "CM_MotorHMIUDT";   // FED20010-M1: CM Motor Hor.belt
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ030 : Struct   // EQ030: Metering tube
+      MET20030 : Struct   // MET20030: Metering tube
          EQ : "EQ_MeteringTube000HMIUDT";
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ040 : Struct   // EQ040: Steam Panel
+      SEP20040 : Struct   // SEP20040: Steam Panel
          EQ : "EQ_SinMot3SolHMIUDT";
-         Y1 : "CM_SingleSolHMIUDT";   // EQ040: CM Single Solenoid  Steam
+         Y1 : "CM_SingleSolHMIUDT";   // SEP20040: CM Single Solenoid  Steam
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ050 : Struct   // EQ050: Belt conveyor w Doffer
+      CVB20050 : Struct   // CVB20050: Belt conveyor w Doffer
          EQ : "EQ_DoubleMotor000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ050-M1: CM Motor Belt
-         M1U : "CM_InverterHMIUDT";   // EQ050-U1: CM Inverter Belt
-         M2 : "CM_MotorHMIUDT";   // EQ050-M2: CM Motor Doffer
+         M1 : "CM_MotorHMIUDT";   // CVB20050-M1: CM Motor Belt
+         M1U : "CM_InverterHMIUDT";   // CVB20050-U1: CM Inverter Belt
+         M2 : "CM_MotorHMIUDT";   // CVB20050-M2: CM Motor Doffer
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ055 : Struct   // EQ055: Separator
+      DSCL20055 : Struct   // DSCL20055: Separator
          EQ : "EQ_RippingSeparators000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ055-M1: CM Motor Fan 1
-         M1U : "CM_InverterHMIUDT";   // EQ055-U1: CM Inverter Fan 1
-         M2 : "CM_MotorHMIUDT";   // EQ055-M2: CM Motor Air Lock 1
+         M1 : "CM_MotorHMIUDT";   // DSCL20055-M1: CM Motor Fan 1
+         M1U : "CM_InverterHMIUDT";   // DSCL20055-U1: CM Inverter Fan 1
+         M2 : "CM_MotorHMIUDT";   // DSCL20055-M2: CM Motor Air Lock 1
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ056 : Struct   // EQ056: Separator
-         EQ : "EQ_RippingSeparators000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ056-M1: CM Motor Fan 1
-         M1U : "CM_InverterHMIUDT";   // EQ056-U1: CM Inverter Fan 1
-         M2 : "CM_MotorHMIUDT";   // EQ056-M2: CM Motor Air Lock 1
+      DSCL20056 : Struct   // DSCL20056: Separator
+         M1 : "CM_MotorHMIUDT";   // DSCL20056-M1: CM Motor Fan 1
+         M1U : "CM_InverterHMIUDT";   // DSCL20056-U1: CM Inverter Fan 1
+         M2 : "CM_MotorHMIUDT";   // DSCL20056-M2: CM Motor Air Lock 1
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ061 : Struct   // EQ061: Classifier Air Lock
-         M1 : "CM_MotorHMIUDT";   // EQ061-M1: CM Motor Air Lock
+      AIS20061 : Struct   // AIS20061: Classifier Air Lock
+         M1 : "CM_MotorHMIUDT";   // AIS20061-M1: CM Motor Air Lock
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ070 : Struct   // EQ070A/B/C/D: First Sieving Conveyors
-         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
-         M2 : "CM_MotorHMIUDT";   // EQ071-M1: CM Motor Vibro Conveyor
-         M3 : "CM_MotorHMIUDT";   // EQ075-M1: CM Motor Vibro Conveyor
-         M4 : "CM_MotorHMIUDT";   // EQ076M1: CM Motor Vibro Conveyor
+      CVV20070 : Struct   // CVV20070A/B/C/D: Sieving Conveyors
+         M1 : "CM_MotorHMIUDT";   // CVV20070-M1: CM Motor Vibro Conveyor
+         M2 : "CM_MotorHMIUDT";   // CVV20071-M1: CM Motor Vibro Conveyor
+         M3 : "CM_MotorHMIUDT";   // CVV20075-M1: CM Motor Vibro Conveyor
+         M4 : "CM_MotorHMIUDT";   // CVV20076M1: CM Motor Vibro Conveyor
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ080 : Struct   // EQ080: Second Vibro Conveyor
+      CVV20080 : Struct   // CVV20080: Vibro Sieving  Conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ080-M1: CM Motor Vibro Conveyor
+         M1 : "CM_MotorHMIUDT";   // CVV20080-M1: CM Motor Vibro Conveyor
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ085 : Struct   // EQ085: Belt conveyor
+      CVB20085 : Struct   // CVB20085: Belt conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         M1 : "CM_MotorHMIUDT";   // CVB20085: CM Motor Belt Conveyor
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ086 : Struct   // EQ086: Belt conveyor
+      CVB20086 : Struct   // CVB20086: Belt conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         M1 : "CM_MotorHMIUDT";   // CVB20086: CM Motor Belt Conveyor
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ087 : Struct   // EQ087:  Belt conveyor
+      CVB20087 : Struct   // CVB20087:  Belt conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ070A/B-M1: CM Motor Vibro Conveyor
+         M1 : "CM_MotorHMIUDT";   // CVB20087: CM Motor Belt Conveyor
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ090 : Struct   // EQ090: Vibro Conveyor
+      CVV20090 : Struct   // CVV20090: Vibro Sieving Conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ090-M1: CM Motor Belt
+         M1 : "CM_MotorHMIUDT";   // CVV20090-M1: CM Motor Belt
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ100 : Struct   // EQ100: Belt conveyor
+      CVB20100 : Struct   // CVB20100: Belt conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ100-M1: CM Motor Belt
+         M1 : "CM_MotorHMIUDT";   // CVB20100-M1: CM Motor Belt
+         M1U : "CM_InverterHMIUDT";   // CVB20100-M1: CM Inverter Belt
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ120LP1 : Struct   // EQ120: Filter 1
+      DLF20120LP1 : Struct   // DLF20120LP1: Filter 1
          EQ : "EQ_RippingDustFilter000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ120-M1: CM Motor Air Lock
-         YV1 : "CM_SingleSolHMIUDT";   // EQ120-YV1: CM Single Solenoid Filter Clean 1
-         YV2 : "CM_SingleSolHMIUDT";   // EQ120-YV2: CM Single Solenoid Filter Clean 2
-         YV3 : "CM_SingleSolHMIUDT";   // EQ120-YV3: CM Single Solenoid Filter Clean 3
-         YV4 : "CM_SingleSolHMIUDT";   // EQ120-YV4: CM Single Solenoid Filter Clean 4
-         YV5 : "CM_SingleSolHMIUDT";   // EQ120-YV5: CM Single Solenoid Filter Clean 5
-         YV6 : "CM_SingleSolHMIUDT";   // EQ120-YV6: CM Single Solenoid Filter Clean 6
-         YV7 : "CM_SingleSolHMIUDT";   // EQ120-YV7: CM Single Solenoid Filter Clean 7
+         M1 : "CM_MotorHMIUDT";   // DLF20120LP1-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // DLF20120LP1-YV7: CM Single Solenoid Filter Clean 7
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ120LP2 : Struct   // EQ120LP2: Filter 2
+      DLF20120LP2 : Struct   // DLF20120LP2: Filter 2
          EQ : "EQ_RippingDustFilter000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ120LP2-M1: CM Motor Air Lock
-         YV1 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV1: CM Single Solenoid Filter Clean 1
-         YV2 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV2: CM Single Solenoid Filter Clean 2
-         YV3 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV3: CM Single Solenoid Filter Clean 3
-         YV4 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV4: CM Single Solenoid Filter Clean 4
-         YV5 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV5: CM Single Solenoid Filter Clean 5
-         YV6 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV6: CM Single Solenoid Filter Clean 6
-         YV7 : "CM_SingleSolHMIUDT";   // EQ120LP2-YV7: CM Single Solenoid Filter Clean 7
+         M1 : "CM_MotorHMIUDT";   // DLF20120LP2-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // DLF20120LP2-YV7: CM Single Solenoid Filter Clean 7
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ120LP3 : Struct   // EQ120LP3: Filter 3 with fan
+      DLF20120LP3 : Struct   // DLF20120LP3: Filter 3 with fan
          EQ : "EQ_RippingDustFilter000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ120LP3-M1: CM Motor Air Lock
-         YV1 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV1: CM Single Solenoid Filter Clean 1
-         YV2 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV2: CM Single Solenoid Filter Clean 2
-         YV3 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV3: CM Single Solenoid Filter Clean 3
-         YV4 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV4: CM Single Solenoid Filter Clean 4
-         YV5 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV5: CM Single Solenoid Filter Clean 5
-         YV6 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV6: CM Single Solenoid Filter Clean 6
-         YV7 : "CM_SingleSolHMIUDT";   // EQ120LP3-YV7: CM Single Solenoid Filter Clean 7
+         M1 : "CM_MotorHMIUDT";   // DLF20120LP3-M1: CM Motor Air Lock
+         YV1 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV1: CM Single Solenoid Filter Clean 1
+         YV2 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV2: CM Single Solenoid Filter Clean 2
+         YV3 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV3: CM Single Solenoid Filter Clean 3
+         YV4 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV4: CM Single Solenoid Filter Clean 4
+         YV5 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV5: CM Single Solenoid Filter Clean 5
+         YV6 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV6: CM Single Solenoid Filter Clean 6
+         YV7 : "CM_SingleSolHMIUDT";   // DLF20120LP3-YV7: CM Single Solenoid Filter Clean 7
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ140 : Struct   // EQ140: Filter fan
+      DLF20140 : Struct   // DLF20140: Filter fan
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ140-M1: CM Motor Fan
+         M1 : "CM_MotorHMIUDT";   // DLF20140-M1: CM Motor Fan
          M1U : "CM_InverterHMIUDT";
          SparesAr : Array[1..20] of Word;
       END_STRUCT;
-      EQ150 : Struct   // EQ150: Screw conveyor
+      CVS20150 : Struct   // CVS20150: Screw conveyor
          EQ : "EQ_SinMot000HMIUDT";
-         M1 : "CM_MotorHMIUDT";   // EQ150-M1: CM Motor Screw
+         M1 : "CM_MotorHMIUDT";   // CVS20150-M1: CM Motor Screw
          SparesAr : Array[1..72] of Word;
       END_STRUCT;
       serviceDiagDs : "ServicesDiagHMIUDT";
@@ -331,86 +332,86 @@ NON_RETAIN
 
 
 BEGIN
-   EQ090.SparesAr[1] := 16#0000;
-   EQ090.SparesAr[2] := 16#0000;
-   EQ090.SparesAr[3] := 16#0000;
-   EQ090.SparesAr[4] := 16#0000;
-   EQ090.SparesAr[5] := 16#0000;
-   EQ090.SparesAr[6] := 16#0000;
-   EQ090.SparesAr[7] := 16#0000;
-   EQ090.SparesAr[8] := 16#0000;
-   EQ090.SparesAr[9] := 16#0000;
-   EQ090.SparesAr[10] := 16#0000;
-   EQ090.SparesAr[11] := 16#0000;
-   EQ090.SparesAr[12] := 16#0000;
-   EQ090.SparesAr[13] := 16#0000;
-   EQ090.SparesAr[14] := 16#0000;
-   EQ090.SparesAr[15] := 16#0000;
-   EQ090.SparesAr[16] := 16#0000;
-   EQ090.SparesAr[17] := 16#0000;
-   EQ090.SparesAr[18] := 16#0000;
-   EQ090.SparesAr[19] := 16#0000;
-   EQ090.SparesAr[20] := 16#0000;
-   EQ120LP1.SparesAr[1] := 16#0000;
-   EQ120LP1.SparesAr[2] := 16#0000;
-   EQ120LP1.SparesAr[3] := 16#0000;
-   EQ120LP1.SparesAr[4] := 16#0000;
-   EQ120LP1.SparesAr[5] := 16#0000;
-   EQ120LP1.SparesAr[6] := 16#0000;
-   EQ120LP1.SparesAr[7] := 16#0000;
-   EQ120LP1.SparesAr[8] := 16#0000;
-   EQ120LP1.SparesAr[9] := 16#0000;
-   EQ120LP1.SparesAr[10] := 16#0000;
-   EQ120LP1.SparesAr[11] := 16#0000;
-   EQ120LP1.SparesAr[12] := 16#0000;
-   EQ120LP1.SparesAr[13] := 16#0000;
-   EQ120LP1.SparesAr[14] := 16#0000;
-   EQ120LP1.SparesAr[15] := 16#0000;
-   EQ120LP1.SparesAr[16] := 16#0000;
-   EQ120LP1.SparesAr[17] := 16#0000;
-   EQ120LP1.SparesAr[18] := 16#0000;
-   EQ120LP1.SparesAr[19] := 16#0000;
-   EQ120LP1.SparesAr[20] := 16#0000;
-   EQ120LP2.SparesAr[1] := 16#0000;
-   EQ120LP2.SparesAr[2] := 16#0000;
-   EQ120LP2.SparesAr[3] := 16#0000;
-   EQ120LP2.SparesAr[4] := 16#0000;
-   EQ120LP2.SparesAr[5] := 16#0000;
-   EQ120LP2.SparesAr[6] := 16#0000;
-   EQ120LP2.SparesAr[7] := 16#0000;
-   EQ120LP2.SparesAr[8] := 16#0000;
-   EQ120LP2.SparesAr[9] := 16#0000;
-   EQ120LP2.SparesAr[10] := 16#0000;
-   EQ120LP2.SparesAr[11] := 16#0000;
-   EQ120LP2.SparesAr[12] := 16#0000;
-   EQ120LP2.SparesAr[13] := 16#0000;
-   EQ120LP2.SparesAr[14] := 16#0000;
-   EQ120LP2.SparesAr[15] := 16#0000;
-   EQ120LP2.SparesAr[16] := 16#0000;
-   EQ120LP2.SparesAr[17] := 16#0000;
-   EQ120LP2.SparesAr[18] := 16#0000;
-   EQ120LP2.SparesAr[19] := 16#0000;
-   EQ120LP2.SparesAr[20] := 16#0000;
-   EQ120LP3.SparesAr[1] := 16#0000;
-   EQ120LP3.SparesAr[2] := 16#0000;
-   EQ120LP3.SparesAr[3] := 16#0000;
-   EQ120LP3.SparesAr[4] := 16#0000;
-   EQ120LP3.SparesAr[5] := 16#0000;
-   EQ120LP3.SparesAr[6] := 16#0000;
-   EQ120LP3.SparesAr[7] := 16#0000;
-   EQ120LP3.SparesAr[8] := 16#0000;
-   EQ120LP3.SparesAr[9] := 16#0000;
-   EQ120LP3.SparesAr[10] := 16#0000;
-   EQ120LP3.SparesAr[11] := 16#0000;
-   EQ120LP3.SparesAr[12] := 16#0000;
-   EQ120LP3.SparesAr[13] := 16#0000;
-   EQ120LP3.SparesAr[14] := 16#0000;
-   EQ120LP3.SparesAr[15] := 16#0000;
-   EQ120LP3.SparesAr[16] := 16#0000;
-   EQ120LP3.SparesAr[17] := 16#0000;
-   EQ120LP3.SparesAr[18] := 16#0000;
-   EQ120LP3.SparesAr[19] := 16#0000;
-   EQ120LP3.SparesAr[20] := 16#0000;
+   CVV20090.SparesAr[1] := 16#0000;
+   CVV20090.SparesAr[2] := 16#0000;
+   CVV20090.SparesAr[3] := 16#0000;
+   CVV20090.SparesAr[4] := 16#0000;
+   CVV20090.SparesAr[5] := 16#0000;
+   CVV20090.SparesAr[6] := 16#0000;
+   CVV20090.SparesAr[7] := 16#0000;
+   CVV20090.SparesAr[8] := 16#0000;
+   CVV20090.SparesAr[9] := 16#0000;
+   CVV20090.SparesAr[10] := 16#0000;
+   CVV20090.SparesAr[11] := 16#0000;
+   CVV20090.SparesAr[12] := 16#0000;
+   CVV20090.SparesAr[13] := 16#0000;
+   CVV20090.SparesAr[14] := 16#0000;
+   CVV20090.SparesAr[15] := 16#0000;
+   CVV20090.SparesAr[16] := 16#0000;
+   CVV20090.SparesAr[17] := 16#0000;
+   CVV20090.SparesAr[18] := 16#0000;
+   CVV20090.SparesAr[19] := 16#0000;
+   CVV20090.SparesAr[20] := 16#0000;
+   DLF20120LP1.SparesAr[1] := 16#0000;
+   DLF20120LP1.SparesAr[2] := 16#0000;
+   DLF20120LP1.SparesAr[3] := 16#0000;
+   DLF20120LP1.SparesAr[4] := 16#0000;
+   DLF20120LP1.SparesAr[5] := 16#0000;
+   DLF20120LP1.SparesAr[6] := 16#0000;
+   DLF20120LP1.SparesAr[7] := 16#0000;
+   DLF20120LP1.SparesAr[8] := 16#0000;
+   DLF20120LP1.SparesAr[9] := 16#0000;
+   DLF20120LP1.SparesAr[10] := 16#0000;
+   DLF20120LP1.SparesAr[11] := 16#0000;
+   DLF20120LP1.SparesAr[12] := 16#0000;
+   DLF20120LP1.SparesAr[13] := 16#0000;
+   DLF20120LP1.SparesAr[14] := 16#0000;
+   DLF20120LP1.SparesAr[15] := 16#0000;
+   DLF20120LP1.SparesAr[16] := 16#0000;
+   DLF20120LP1.SparesAr[17] := 16#0000;
+   DLF20120LP1.SparesAr[18] := 16#0000;
+   DLF20120LP1.SparesAr[19] := 16#0000;
+   DLF20120LP1.SparesAr[20] := 16#0000;
+   DLF20120LP2.SparesAr[1] := 16#0000;
+   DLF20120LP2.SparesAr[2] := 16#0000;
+   DLF20120LP2.SparesAr[3] := 16#0000;
+   DLF20120LP2.SparesAr[4] := 16#0000;
+   DLF20120LP2.SparesAr[5] := 16#0000;
+   DLF20120LP2.SparesAr[6] := 16#0000;
+   DLF20120LP2.SparesAr[7] := 16#0000;
+   DLF20120LP2.SparesAr[8] := 16#0000;
+   DLF20120LP2.SparesAr[9] := 16#0000;
+   DLF20120LP2.SparesAr[10] := 16#0000;
+   DLF20120LP2.SparesAr[11] := 16#0000;
+   DLF20120LP2.SparesAr[12] := 16#0000;
+   DLF20120LP2.SparesAr[13] := 16#0000;
+   DLF20120LP2.SparesAr[14] := 16#0000;
+   DLF20120LP2.SparesAr[15] := 16#0000;
+   DLF20120LP2.SparesAr[16] := 16#0000;
+   DLF20120LP2.SparesAr[17] := 16#0000;
+   DLF20120LP2.SparesAr[18] := 16#0000;
+   DLF20120LP2.SparesAr[19] := 16#0000;
+   DLF20120LP2.SparesAr[20] := 16#0000;
+   DLF20120LP3.SparesAr[1] := 16#0000;
+   DLF20120LP3.SparesAr[2] := 16#0000;
+   DLF20120LP3.SparesAr[3] := 16#0000;
+   DLF20120LP3.SparesAr[4] := 16#0000;
+   DLF20120LP3.SparesAr[5] := 16#0000;
+   DLF20120LP3.SparesAr[6] := 16#0000;
+   DLF20120LP3.SparesAr[7] := 16#0000;
+   DLF20120LP3.SparesAr[8] := 16#0000;
+   DLF20120LP3.SparesAr[9] := 16#0000;
+   DLF20120LP3.SparesAr[10] := 16#0000;
+   DLF20120LP3.SparesAr[11] := 16#0000;
+   DLF20120LP3.SparesAr[12] := 16#0000;
+   DLF20120LP3.SparesAr[13] := 16#0000;
+   DLF20120LP3.SparesAr[14] := 16#0000;
+   DLF20120LP3.SparesAr[15] := 16#0000;
+   DLF20120LP3.SparesAr[16] := 16#0000;
+   DLF20120LP3.SparesAr[17] := 16#0000;
+   DLF20120LP3.SparesAr[18] := 16#0000;
+   DLF20120LP3.SparesAr[19] := 16#0000;
+   DLF20120LP3.SparesAr[20] := 16#0000;
 
 END_DATA_BLOCK
 

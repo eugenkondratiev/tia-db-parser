@@ -1,33 +1,53 @@
 const CPU_PREFIX = 'CP20'
 const DB_NUMBER = 101;
+const CONNECTION_ID = "CP20"
+
 // const DB_NAME = 'User_data_type_1.udt';
-const DB_NAME = 'HMIDB';
+// const DB_NAME = 'HMIDB';
 
 // const srcFile = './sourse/HMIDB.db'
 //EQParametersDB
 const srcFile = './sourse/EQParametersDB.db'
+const SOURSE_PATH = './sourse/'
+const srcFiles = [
+  // 'User_data_type_1.udt',
+
+  ['EQParametersDB.db', 0],
+  ['HMIDB.db', 0],
+  ['U01TrackingDB.db', 0],
+  ['AlarmDB.db', 0],
+  ['DIDB.db', 0],
+  ['AIDB.db', 0],
+  ['InitDB.db', 0],
+
+]
 
 // const srcFile = './sourse/User_data_type_1.udt'
 
-const dblines = []
-const parseString = require('./parse-type-string')
-const parseStruct = require('./parse-struct-string')
+// const parseString = require('./parse-type-string')
+// const parseStruct = require('./parse-struct-string')
+
+
 const parseTypeArray = require('./parse-type-array')
 const parseBlockArray = require('./parse-block-array')
+const formTagsArray = require('./xlsx/form-tags-array')
+
 
 const events = require('events');
 const fs = require('fs');
 const readline = require('readline');
 
-(async function processLineByLine() {
+async function processLineByLine(fileName, dbIndex) {
+  const dblines = []
   const dbtree = {
     types: {},
-    db: {}
+    db: {},
+    dnIndex: dbIndex,
   }
 
   try {
     const rl = readline.createInterface({
-      input: fs.createReadStream(srcFile),
+      input: fs.createReadStream(fileName),
       crlfDelay: Infinity
     });
 
@@ -57,10 +77,9 @@ const readline = require('readline');
         isReadingType = false
         // console.log(_index, ' END_TYPE ', isReadingType, strCurrentType, currenTypeLines.length)
         if (currenTypeLines.length) {
-          dbtree.types[strCurrentType] = {...parseTypeArray(currenTypeLines)}
+          dbtree.types[strCurrentType] = { ...parseTypeArray(currenTypeLines) }
         }
         currenTypeLines = []
-        
       }
       else if (l.match('TYPE')) {
         isReadingType = true
@@ -70,33 +89,13 @@ const readline = require('readline');
           strCurrentType = _match[0].replace(/\"/g, "")
           // console.log(_index, " strCurrentType - ", isReadingType, strCurrentType)
         }
-      // }
-      // else if (l.match('END_STRUCT')) {
-      //   isReadingStruct = false
-      //   // console.log(_index, " END_STRUCT - ", l)
-
-      // } else if (l.match(/STRUCT/)) {
-      //   isReadingStruct = true
-      //   console.log(_index, " STRUCT - ", l)
-
-      // // } else if (l.match(/Struct/)) {
-      // //   isReadingStruct = true
-      // //   console.log(_index, " Struct - ", l)
-      // //   if (isReadingBlock) {
-      // //     const parsetStr = parseStruct(l)
-      // //     console.log(_index, "new struct in block", parsetStr)
-      // //     if (!dbtree.db[parsetStr.name]) {
-      // //       dbtree.db[parsetStr.name] = {}
-      // //       strCurrentStruct = parsetStr.name
-      // //     }
-      // //   }
 
       } else if (l.match('END_DATA_BLOCK') || l.match('BEGIN')) {
         isReadingBlock = false
 
-        console.log(_index, " DATA_BLOCK - ", l,  dataBlockLines.length,dataBlockLines)
+        // console.log(_index, " DATA_BLOCK - ", l, dataBlockLines.length, dataBlockLines)
         if (dataBlockLines.length) {
-          dbtree.db = {...parseBlockArray(dataBlockLines)}
+          dbtree.db = { ...parseBlockArray(dataBlockLines) }
         }
         dataBlockLines = []
 
@@ -116,44 +115,55 @@ const readline = require('readline');
         if (isReadingBlock) {
           dataBlockLines.push(l)
         }
-
-        // if (isReadingType && !l.match(/VERSION/i)) {
-        //   const parsedString = parseString(l)
-        //   // console.log(_index, strCurrentType, " type row - ", parseString(l))
-        //   if (!dbtree.types[strCurrentType]) {
-        //     dbtree.types[strCurrentType] = {}
-        //   }
-        //   dbtree.types[strCurrentType][parsedString.name] = { ...parsedString.data }
-        // } else if (isReadingBlock && !isReadingStruct) {
-        //   if (!l.match(/VERSION|S7_Optimized_Access|NON_RETAIN/g)) {
-
-        //     console.log(_index, isReadingBlock, isReadingStruct, " db block row direct var- ", l)
-        //     const parsedStr = parseStruct(l)
-        //     if (!dbtree.db[parsedStr.name]) {
-        //       dbtree.db[parsedStr.name] = { data: parsedStr.data }
-        //       strCurrentStruct = parsedStr.name
-        //     }
-
-        //   } else {
-        //     console.log(_index, isReadingBlock, isReadingStruct, " db block row dsome struct- ", l)
-
-        //   }
-        // } else if (isReadingBlock && isReadingStruct) {
-
-        //   console.log(_index, isReadingBlock, isReadingStruct, strCurrentStruct, " isReadingStruct- ", l)
-
-
-        // }
       }
-
-
     })
-
-
     // console.log("#### dbtree   ", JSON.stringify(dbtree, null, " "))
-    fs.writeFileSync('./dest/parsed.json', JSON.stringify(dbtree, null, " "))
+    return dbtree;
+
   } catch (err) {
     console.error(err);
   }
+}
+
+(async function main() {
+  let tagsarray = []
+  const dbsarray = []
+  //############################READ FILES ####################################
+  for await (const [fileName, dbIndex] of srcFiles) {
+    try {
+      console.log("#####READ new file  ", fileName);
+
+      const dbtreeObj = await processLineByLine(SOURSE_PATH + fileName, dbIndex);
+      dbsarray.push(dbtreeObj)
+
+    } catch (error) {
+      console.error("Error process file ", fileName, error)
+    }
+    fs.writeFileSync('./dest/parsed.json', JSON.stringify(dbsarray, null, " "))
+
+
+
+
+  }
+
+  //######################UPDATE TYPES##########################################
+
+
+  const currentName = [CPU_PREFIX]
+
+  //#######################FORM TAGS ARRAY##########################################
+  for await (const dbObj of dbsarray) {
+    // console.log(`${CPU_PREFIX}_${dbObj.dbName}`);
+
+    const dbTagsArray = formTagsArray(dbObj, currentName, CONNECTION_ID)
+    tagsarray = [...tagsarray, ...dbTagsArray]
+
+    //add connection id  as prefix to path and in connection column 
+
+  }
+  console.log("tagsArray.length", tagsarray.length);
+  const noSpareTagsArray = tagsarray.filter(tagRecord => !tagRecord[0].includes('spare'))
+  console.log("noSpareTagsArray.length", noSpareTagsArray.length);
+
 })();
 

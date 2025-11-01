@@ -6,9 +6,9 @@ const parseStructArrayString = require('./parse-array-string')
 const parseBlockArray = (blockArray) => {
     const rows = blockArray.filter(line => !line.match(/(VERSION|NON_RETAIN|BEGIN|END_BLOCK)/) && line != "").slice(2, -1)
 
-    console.log("BLOCK rows - ", rows);
-    console.log("BLOCK rows[0] - ", rows[0]);
-    console.log("BLOCK rows last - ", rows[rows.length - 1]);
+    // console.log("BLOCK rows - ", rows);
+    // console.log("BLOCK rows[0] - ", rows[0]);
+    // console.log("BLOCK rows last - ", rows[rows.length - 1]);
 
     const rlt = {}
     const structLines = []
@@ -38,7 +38,7 @@ const parseBlockArray = (blockArray) => {
                     ;//still nested . proceed
                 } else {
                     //do smth
-                    console.log("###### Struct ended", structLines.length, structLines);
+                    // console.log("###### Struct ended", structLines.length, structLines);
                     const structInBlock = parseBlockStructArray(structLines)
 
                     rlt[structInBlock.name] = { ...structInBlock.data }

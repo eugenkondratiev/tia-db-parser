@@ -47,6 +47,8 @@ const parseTypeStructArray = (typeArray) => {
                         structRlt[structInType.name].arrayStart  = structArrayParameters.start
                         structRlt[structInType.name].arrayEnd  = structArrayParameters.end
                         
+                    } else {
+                        structRlt[structInType.name].isStruct = true
                     }
                 while (structLines.length) { structLines.pop() } // clear
             }

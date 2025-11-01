@@ -2,7 +2,8 @@ const parseString = (str) => {
 
 
 
-    const checkComment = str.split("//")
+    const checkComment = str.replace(/\{(.*)\}/g,"").split("//")
+    // const checkComment = str.split("//")
     const _comment = checkComment[1] ? checkComment[1] : null
 
     const checkDefValue = checkComment[0].split(":=")
