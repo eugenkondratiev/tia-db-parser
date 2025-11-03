@@ -7,45 +7,45 @@ module.exports = function getTypeInfo(type, typesObj) {
             dataType: 'Bool',
             size: 1,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'Int') return {
             dataType: 'Int',
             size: 2,
             coding: 'Binary',
-            _db:'DBW'
+            _db: 'DBW'
 
         }
         if (typeName === 'Real') return {
             dataType: 'Real',
             size: 4,
             coding: 'IEEE754',
-            _db:'DBD'
+            _db: 'DBD'
 
         }
         if (typeName === 'Word') return {
             dataType: 'Word',
             size: 2,
             coding: 'Binary',
-            _db:'DBW'
+            _db: 'DBW'
         }
         if (typeName === 'Date_And_Time') return {
             dataType: 'Date_And_Time',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'Date') return {
             dataType: 'Date',
             size: 2,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'Time') return {
             dataType: 'Time',
             size: 4,
             coding: 'Binary',
-            _db:'DBD'
+            _db: 'DBD'
         }
 
 
@@ -55,13 +55,13 @@ module.exports = function getTypeInfo(type, typesObj) {
             dataType: 'Byte',
             size: 1,
             coding: 'Binary',
-            _db:'DBB'
+            _db: 'DBB'
         }
         if (typeName === 'Char') return {
             dataType: 'Char',
             size: 1,
             coding: 'Binary',
-            _db:'DBB'
+            _db: 'DBB'
         }
 
         if (typeName === 'DWord') return {
@@ -73,74 +73,75 @@ module.exports = function getTypeInfo(type, typesObj) {
             dataType: 'Time_Of_Day',
             size: 4,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'SInt') return {
             dataType: 'SInt',
             size: 2,
             coding: 'Binary',
-            _db:'DBB'
+            _db: 'DBB'
         }
         if (typeName === 'LWord') return {
             dataType: 'LWord',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'LInt') return {
             dataType: 'LInt',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'LReal') return {
             dataType: 'LReal',
             size: 8,
             coding: 'IEEE754',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'LTime') return {
             dataType: 'LTime',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'LTime_Of_Day') return {
             dataType: 'LTime_Of_Day',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'UDInt') return {
             dataType: 'UDInt',
             size: 4,
             coding: 'Binary',
-            _db:'DBD'
+            _db: 'DBD'
         }
         if (typeName === 'UInt') return {
             dataType: 'UInt',
             size: 2,
             coding: 'Binary',
-            _db:'DBW'
+            _db: 'DBW'
         }
         if (typeName === 'ULInt') return {
             dataType: 'ULInt',
             size: 8,
             coding: 'Binary',
-            _db:'DBX'
+            _db: 'DBX'
         }
         if (typeName === 'USnt') return {
             dataType: 'USnt',
             size: 2,
             coding: 'Binary',
-            _db:'DBB'
+            _db: 'DBB'
         }
     }
 
     if (typeName == "IPICombinedStatesUDT" || typeName == "IPIDistrCommandsUDT") return {
         dataType: 'Word',
         size: 2,
-        coding: 'Binary'
+        coding: 'Binary',
+        _db: 'DBW'
     }
 
 
@@ -152,7 +153,8 @@ module.exports = function getTypeInfo(type, typesObj) {
             return {
                 dataType: 'String',
                 size: strLength + 2, // +2 for length bytes
-                coding: 'Binary'
+                coding: 'Binary',
+                _db: 'DBX'
             }
         }
     }
@@ -174,6 +176,8 @@ module.exports = function getTypeInfo(type, typesObj) {
 
     } else {
         // console.warn("!!!!  AHTUNG Type not found in typesObj: ", typeName)
-         console.log("!!!!  AHTUNG Type not found in typesObj: ", typeName)
+
+        // console.log("!!!!  AHTUNG Type not found in typesObj: ", typeName)
+        return null
     }
 }

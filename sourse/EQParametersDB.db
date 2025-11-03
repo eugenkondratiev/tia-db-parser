@@ -206,7 +206,8 @@ VERSION : 0.1
             spare12Re : Real;
             spare16Re : Real;
          END_STRUCT;
-         spareRe : Array[0..10] of Real;
+         spareRe : Array[0..4] of Real;
+         spareRe_2 : Array[0..5] of Real;
       END_STRUCT;
    END_STRUCT;
 

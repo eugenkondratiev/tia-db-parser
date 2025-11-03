@@ -1,6 +1,7 @@
 const CPU_PREFIX = 'CP20'
 const DB_NUMBER = 101;
 const CONNECTION_ID = "CP20"
+const { HEADER_ARRAY } = require('./constants')
 
 // const DB_NAME = 'User_data_type_1.udt';
 // const DB_NAME = 'HMIDB';
@@ -12,13 +13,13 @@ const SOURSE_PATH = './sourse/'
 const srcFiles = [
   // 'User_data_type_1.udt',
 
-  ['EQParametersDB.db', 0],
-  ['HMIDB.db', 0],
-  ['U01TrackingDB.db', 0],
-  ['AlarmDB.db', 0],
-  ['DIDB.db', 0],
-  ['AIDB.db', 0],
-  ['InitDB.db', 0],
+  ['HMIDB.db', 101],
+  ['U01TrackingDB.db', 320],
+  ['AlarmDB.db', 51],
+  ['DIDB.db', 61],
+  ['AIDB.db', 71],
+  ['InitDB.db', 31],
+  ['EQParametersDB.db', 41],
 
 ]
 
@@ -33,9 +34,13 @@ const parseBlockArray = require('./parse-block-array')
 const formTagsArray = require('./xlsx/form-tags-array')
 
 
+
 const events = require('events');
 const fs = require('fs');
 const readline = require('readline');
+
+const XLSX = require("xlsx");
+// XLSX.set_fs(fs)
 
 async function processLineByLine(fileName, dbIndex) {
   const dblines = []
@@ -126,7 +131,8 @@ async function processLineByLine(fileName, dbIndex) {
 }
 
 (async function main() {
-  let tagsarray = []
+  let tagsarray = [HEADER_ARRAY]
+
   const dbsarray = []
   //############################READ FILES ####################################
   for await (const [fileName, dbIndex] of srcFiles) {
@@ -162,8 +168,13 @@ async function processLineByLine(fileName, dbIndex) {
 
   }
   console.log("tagsArray.length", tagsarray.length);
-  const noSpareTagsArray = tagsarray.filter(tagRecord => !tagRecord[0].includes('spare'))
+  const noSpareTagsArray = tagsarray//.filter(tagRecord => !(tagRecord[0].includes('spare') || tagRecord[0].includes('diagProfinet')))
   console.log("noSpareTagsArray.length", noSpareTagsArray.length);
+
+  const workbook = XLSX.utils.book_new();
+  const worksheet = XLSX.utils.aoa_to_sheet(noSpareTagsArray);
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Tags');
+  XLSX.writeFile(workbook, `./dest/${CPU_PREFIX}_tags.xlsx`);
 
 })();
 

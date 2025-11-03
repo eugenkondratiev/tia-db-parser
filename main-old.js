@@ -45,7 +45,7 @@ const readline = require('readline');
       }
       else if (l.match('END_TYPE')) {
         isReadingType = false
-        console.log(_index, ' END_TYPE ', isReadingType, strCurrentType)
+        // console.log(_index, ' END_TYPE ', isReadingType, strCurrentType)
       }
       else if (l.match('TYPE')) {
         isReadingType = true
@@ -53,7 +53,7 @@ const readline = require('readline');
         if (_match) {
 
           strCurrentType = _match[0].replace(/\"/g, "")
-          console.log(_index, " strCurrentType - ", isReadingType, strCurrentType)
+          // console.log(_index, " strCurrentType - ", isReadingType, strCurrentType)
         }
       }
       else if (l.match('END_STRUCT')) {
@@ -62,14 +62,14 @@ const readline = require('readline');
 
       } else if (l.match(/STRUCT/)) {
         isReadingStruct = true
-        console.log(_index, " STRUCT - ", l)
+        // console.log(_index, " STRUCT - ", l)
 
       } else if (l.match(/Struct/)) {
         isReadingStruct = true
-        console.log(_index, " Struct - ", l)
+        // console.log(_index, " Struct - ", l)
         if (isReadingBlock) {
           const parsetStr = parseStruct(l)
-          console.log(_index, "new struct in block", parsetStr)
+          // console.log(_index, "new struct in block", parsetStr)
           if (!dbtree.db[parsetStr.name]) {
             dbtree.db[parsetStr.name] = {}
             strCurrentStruct = parsetStr.name
@@ -102,7 +102,7 @@ const readline = require('readline');
         } else if (isReadingBlock && !isReadingStruct) {
           if (!l.match(/VERSION|S7_Optimized_Access|NON_RETAIN/g)) {
 
-            console.log(_index, isReadingBlock, isReadingStruct, " db block row direct var- ", l)
+            // console.log(_index, isReadingBlock, isReadingStruct, " db block row direct var- ", l)
             const parsedStr = parseStruct(l)
             if (!dbtree.db[parsedStr.name]) {
               dbtree.db[parsedStr.name] = { data: parsedStr.data }
@@ -110,12 +110,12 @@ const readline = require('readline');
             }
 
           } else {
-            console.log(_index, isReadingBlock, isReadingStruct, " db block row dsome struct- ", l)
+            // console.log(_index, isReadingBlock, isReadingStruct, " db block row dsome struct- ", l)
 
           }
         } else if (isReadingBlock && isReadingStruct) {
 
-          console.log(_index, isReadingBlock, isReadingStruct, strCurrentStruct, " isReadingStruct- ", l)
+          // console.log(_index, isReadingBlock, isReadingStruct, strCurrentStruct, " isReadingStruct- ", l)
               
 
         }
