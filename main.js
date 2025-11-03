@@ -14,12 +14,12 @@ const srcFiles = [
   // 'User_data_type_1.udt',
 
   ['HMIDB.db', 101],
-  ['U01TrackingDB.db', 320],
-  ['AlarmDB.db', 51],
-  ['DIDB.db', 61],
-  ['AIDB.db', 71],
-  ['InitDB.db', 31],
-  ['EQParametersDB.db', 41],
+  // ['U01TrackingDB.db', 320],
+  // ['AlarmDB.db', 51],
+  // ['DIDB.db', 61],
+  // ['AIDB.db', 71],
+  // ['InitDB.db', 31],
+  // ['EQParametersDB.db', 41],
 
 ]
 

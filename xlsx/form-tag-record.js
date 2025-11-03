@@ -3,9 +3,15 @@
 const { END_OF_TAG_ROW, COLMNS_BEFORE_COMMENT, } = require('../constants')
 
 module.exports = (tagName, typeInfo, currentName, offset, tagsArray) => {
+
+    const lastTagsArrayIndex = tagsArray.length - 1
+    const lastTag = tagsArray[lastTagsArrayIndex]
+    
+    
     const currentAdressInDb = typeInfo.dataType != 'Bool'
         ? offset.current
         : offset.bools > 7 ? offset.current + 1 : offset.current
+
     let currentAddress = `%DB${offset.dbIndex}.${typeInfo._db}${currentAdressInDb}`
     if (typeInfo.dataType === 'String' || typeInfo.dataType === 'ULInt'
         || typeInfo.dataType === 'LInt' || typeInfo.dataType === 'LReal'
@@ -20,7 +26,7 @@ module.exports = (tagName, typeInfo, currentName, offset, tagsArray) => {
         offset.connectionId,
         '<No Value>',
         typeInfo.dataType,
-        typeInfo.size,
+        typeInfo.dataType === 'String' ? typeInfo.size - 2 : typeInfo.size,
         typeInfo.coding,
         "Absolute access",
         currentAddress,

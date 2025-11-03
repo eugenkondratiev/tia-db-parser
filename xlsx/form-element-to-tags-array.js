@@ -5,7 +5,7 @@ const formTagRecord = require('./form-tag-record')
 const formElementsToTagsArray = (element, types, currentName, offset, tagsArray) => {
 
 
-    // console.log("------------------Object.entries(element) - ", Object.entries(element));
+    console.log("------------------Object.entries(element) - ", Object.entries(element));
 
 
 
@@ -33,18 +33,43 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
             console.log("%%%%%%%%%%%%% OOOPPPPA   %%%%%%%%%%%", tagName, tagDef);
         }
 
-        if (tagDef && (tagDef.isArray || tagDef.type && tagDef.type.match(/rray/) || tagDef.dataType && tagDef.dataType.match(/rray/)) ){
-            const arrTypeData = parseArrayString(tagDef.type)
+        if (tagDef && (tagDef.isArray || tagDef.type && tagDef.type.match(/rray/) || tagDef.dataType && tagDef.dataType.match(/rray/))) {
 
-            console.log("###WOW its array", currentName.join('_'), tagName, tagDef, arrTypeData);
+            const _type = tagDef.type || tagDef.dataType
+
+            const arrTypeData = parseArrayString(_type)
+
             //TODO process array elements
-            currentName.push(tagName)
 
-            const typeInfoArray = getTypeInfo(tagDef.type, types)
-            if (typeInfoArray) {
-                // console.log("---- tagDef   typeInfoArray  --------------", currentName.join('_'), tagName, tagDef, "typeInfo -", typeInfoArray);
+            const typeInfoArray = getTypeInfo(arrTypeData.type, types)
+            const currentArrayType = types[arrTypeData.type]
+
+
+            console.log("###WOW its array", currentName.join('_'), tagName, tagDef, arrTypeData, typeInfoArray, _type, currentArrayType);
+
+            // const arrInfo = parseArrayString(tagDef.type)
+            // const typeInfoStruct = getTypeInfo(arrInfo.type, types)
+            currentName.push(tagName)
+            for (let index = arrTypeData.start; index <= arrTypeData.end; index++) {
+                if (currentArrayType) {
+                    currentName.push(index)
+
+                    //recursive nesting
+                    //console.log("--???????????????????????????????????????????????????????????????-- tagDef   typeInfoArray  --------------", currentName.join('_'), tagName, tagDef, "typeInfo -", typeInfoArray);
+                    formElementsToTagsArray(currentArrayType, types, currentName, offset, tagsArray)
+
+                    //???????????????????????????????????????????????????????????????
+
+                    currentName.pop()
+                } else {
+                    //array of primitive type -    form tag
+                    const newTagRecord = formTagRecord(index, typeInfoArray, currentName, offset, tagsArray)
+                    // console.log('##### NEW TAG', newTagRecord);
+                    tagsArray.push(newTagRecord)
+                }
             }
             currentName.pop()
+
         }
         else if (tagDef && tagDef.type) {
 
