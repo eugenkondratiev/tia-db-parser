@@ -5,11 +5,13 @@ const formTagRecord = require('./form-tag-record')
 const formElementsToTagsArray = (element, types, currentName, offset, tagsArray) => {
 
 
-    console.log("------------------Object.entries(element) - ", Object.entries(element));
+    // console.log("------------------Object.entries(element) - ", Object.entries(element));
 
 
 
-    for (const [tagName, tagDef] of Object.entries(element)) {
+    for (const [_tagName, tagDef] of Object.entries(element)) {
+        const tagName = String(_tagName).replace(/\_/g, "")
+
         // console.log("####Object.entries(element)  ##", currentName.join('_'), tagName, Object.entries(tagDef).map((entr) => `${entr[0]}:${entr[1] && entr[1].type}:${entr[1] && entr[1].isArray}`));
 
         // if (typeof tagDef != 'object') { continue }
@@ -66,6 +68,8 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                     const newTagRecord = formTagRecord(index, typeInfoArray, currentName, offset, tagsArray)
                     // console.log('##### NEW TAG', newTagRecord);
                     tagsArray.push(newTagRecord)
+                    console.log("00000000000000000000000   tagsArray     ", tagsArray.length);
+
                 }
             }
             currentName.pop()
@@ -102,6 +106,10 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                     const newTagRecord = formTagRecord(tagName, typeInfo, currentName, offset, tagsArray)
                     // console.log('##### NEW TAG', newTagRecord);
                     tagsArray.push(newTagRecord)
+
+
+                    // console.log("00000000000000000000000   tagsArray     ", tagsArray.length);
+
                 }
             } else {
                 console.log("----- ??????", tagName, tagDef.type, tagDef.isStruct);
@@ -109,25 +117,29 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
         }
         else {   ///   possibly struct.  may be array
             if (typeof tagDef === 'object' && tagDef !== null) {
-                console.log("---- Struct", currentName.join('_'), tagName);
-                console.log("---- Struct", currentName.join('_'), tagName, Object.keys(tagDef));
+                // console.log("---- Struct", currentName.join('_'), tagName);
+                // console.log("---- Struct", currentName.join('_'), tagName, Object.keys(tagDef));
+
+
                 // console.log("[tagName, tagDef] of Object.entries(db)  -", tagName, tagDef);
+                
+                
                 currentName.push(tagName)
                 for (const [_tagNameStruct, _tagDefStruct] of Object.entries(tagDef)) {
 
                     const typeInfoStruct = getTypeInfo(_tagDefStruct.type, types)
 
-                    console.log('&&&&&&&&&&&&&&&&&&&&&&&', tagName, currentName.join('_'), '#### PROCESS STRUCT FIELD', _tagNameStruct, "   - object - ")//, _tagDefStruct, typeInfoStruct);
+                    // console.log('&&&&&&&&&&&&&&&&&&&&&&&', tagName, currentName.join('_'), '#### PROCESS STRUCT FIELD', _tagNameStruct, "   - object - ")//, _tagDefStruct, typeInfoStruct);
 
 
 
                     // console.log("##### type+info in struct ", tagName, _tagNameStruct, typeInfoStruct, currentName.join('_'));
                     // if (typeInfoStruct && (_tagDefStruct.type &&_tagDefStruct.type.match(/rray/) || _tagDefStruct.dataType &&_tagDefStruct.dataType.match(/rray/))) { console.log("######    _tagNameStruct  NO  tagDef.type STRUCT???? -------", currentName.join('_'), _tagNameStruct, _tagDefStruct.type, typeInfoStruct) }
                     if ((_tagDefStruct.type && _tagDefStruct.type.match(/rray/))) {
-                        console.log("######    _tagNameStruct  NO  tagDef.type STRUCT???? -------", currentName.join('_'), _tagNameStruct, _tagDefStruct.type)//, typeInfoStruct)
+                        ;//    console.log("######    _tagNameStruct  NO  tagDef.type STRUCT???? -------", currentName.join('_'), _tagNameStruct, _tagDefStruct.type)//, typeInfoStruct)
                     }
                     if ((_tagDefStruct.dataType && _tagDefStruct.dataType.match(/rray/))) {
-                        console.log("#!##!#!##    _tagNameStruct !!!!!! NO  tagDef._tagDefStructSTRUCT???? -------", currentName.join('_'), _tagNameStruct, _tagDefStruct.type)//, typeInfoStruct)
+                        ; // console.log("#!##!#!##    _tagNameStruct !!!!!! NO  tagDef._tagDefStructSTRUCT???? -------", currentName.join('_'), _tagNameStruct, _tagDefStruct.type)//, typeInfoStruct)
                     }
 
                     if (typeInfoStruct) {
@@ -156,12 +168,15 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                             // console.log('##### NEW TAG', newTagRecord);
 
                             tagsArray.push(newTagRecord)
+
+                            // console.log("00000000000000000000000   tagsArray     ", tagsArray.length);
+
                         }
 
                     }
                     else {  ///    process aray of type or struct
-                        console.log('&ELSE ELSE ELSE ELSE &&#### PROCESS STRUCT FIELD&&&', tagName, currentName.join('_'), _tagNameStruct, "   - object - ",
-                            _tagDefStruct, _tagDefStruct.isArray, _tagDefStruct.arrayStart, _tagDefStruct.arrayEnd);
+                        // console.log('&ELSE ELSE ELSE ELSE &&#### PROCESS STRUCT FIELD&&&', tagName, currentName.join('_'), _tagNameStruct, "   - object - ",
+                        //     _tagDefStruct, _tagDefStruct.isArray, _tagDefStruct.arrayStart, _tagDefStruct.arrayEnd);
 
                         if (_tagDefStruct.isArray) {
                             //array of struct
@@ -169,7 +184,9 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                             for (let index = _tagDefStruct.arrayStart; index <= _tagDefStruct.arrayEnd; index++) {
                                 // const element = array[index];
                                 currentName.push(`${_tagNameStruct}_${index}`)
-                                console.log('//array of struct, ', currentName.join('_'), 'SOME Srtuct');
+
+                                // console.log('//array of struct, ', currentName.join('_'), 'SOME Srtuct');
+
                                 //TOTDO process struct fields!!!!!!!!!!!!!!!
                                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!s
 
@@ -190,14 +207,15 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                                     // const element = array[index];
                                     currentName.push(_tagNameStruct)
                                     // currentName.push(`${_tagNameStruct}_${index}`)
-                                    console.log('//```````//array of some type, ', currentName.join('_'), arrInfo.type, index);
                                     // console.log('//```````//array of some type, ', currentName.join('_'), arrInfo.type, index);
+
+
                                     if (types[arrInfo.type]) {
-                                        console.log("types[arrInfo.type]   - ", types[arrInfo.type]);
+                                        // console.log("types[arrInfo.type]   - ", types[arrInfo.type]);
                                     }
                                     // console.log('//```````//array of some type, ', currentName.join('_'), arrInfo.type, index, types[arrInfo.type]);
                                     if (types[arrInfo.type]) {  // struct type -   recursive processing
-                                        console.log('//`###### recurrent``````//array of some type, ', currentName.join('_'), arrInfo.type, index);
+                                        // console.log('//`###### recurrent``````//array of some type, ', currentName.join('_'), arrInfo.type, index);
 
                                         //  formElementsToTagsArray(arrInfo.type, types[arrInfo.type], currentName, offset, tagsArray)
                                         currentName.push(index)
@@ -207,6 +225,8 @@ const formElementsToTagsArray = (element, types, currentName, offset, tagsArray)
                                     } else {  /// elementary type
                                         const newTagRecord = formTagRecord(index, typeInfoStruct, currentName, offset, tagsArray)
                                         tagsArray.push(newTagRecord)
+                                        console.log("00000000000000000000000   tagsArray     ", tagsArray.length);
+
                                     }
                                     currentName.pop()
                                 }

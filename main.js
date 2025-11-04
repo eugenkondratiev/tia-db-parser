@@ -1,7 +1,5 @@
-const CPU_PREFIX = 'CP20'
-const DB_NUMBER = 101;
-const CONNECTION_ID = "CP20"
-const { HEADER_ARRAY } = require('./constants')
+
+const { HEADER_ARRAY,CPU_PREFIX, CONNECTION_ID} = require('./constants')
 
 // const DB_NAME = 'User_data_type_1.udt';
 // const DB_NAME = 'HMIDB';
@@ -14,12 +12,12 @@ const srcFiles = [
   // 'User_data_type_1.udt',
 
   ['HMIDB.db', 101],
-  // ['U01TrackingDB.db', 320],
-  // ['AlarmDB.db', 51],
-  // ['DIDB.db', 61],
-  // ['AIDB.db', 71],
-  // ['InitDB.db', 31],
-  // ['EQParametersDB.db', 41],
+  ['U01TrackingDB.db', 320],
+  ['AlarmDB.db', 51],
+  ['DIDB.db', 61],
+  ['AIDB.db', 71],
+  ['InitDB.db', 31],
+  ['EQParametersDB.db', 41],
 
 ]
 
@@ -168,12 +166,13 @@ async function processLineByLine(fileName, dbIndex) {
 
   }
   console.log("tagsArray.length", tagsarray.length);
-  const noSpareTagsArray = tagsarray//.filter(tagRecord => !(tagRecord[0].includes('spare') || tagRecord[0].includes('diagProfinet')))
+  const noSpareTagsArray = tagsarray.filter(tagRecord => !(tagRecord[0].match(/(spare|diagProfinet|Spare|\")/g))) // diagProfinet
   console.log("noSpareTagsArray.length", noSpareTagsArray.length);
 
   const workbook = XLSX.utils.book_new();
   const worksheet = XLSX.utils.aoa_to_sheet(noSpareTagsArray);
-  XLSX.utils.book_append_sheet(workbook, worksheet, 'Tags');
+  
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Hmi Tags');
   XLSX.writeFile(workbook, `./dest/${CPU_PREFIX}_tags.xlsx`);
 
 })();
